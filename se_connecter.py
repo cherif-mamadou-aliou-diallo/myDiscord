@@ -1,6 +1,8 @@
 from customtkinter import *
 from PIL import Image,ImageTk
 from connectionsql import Connection
+from inscription import Page_inscription
+
 
 
 
@@ -11,6 +13,7 @@ app.title = 'MYDISCORD'
 class connection(Connection):
     def __init__(self) -> None:
         self.conn, self.cursor = Connection(host="localhost", user="root", password="0000", database="discord").connection()
+        
 
         entry = CTkEntry(master = app, placeholder_text="email adresse ", width=300,)
         entry1 = CTkEntry(master = app, placeholder_text="password", width=300)
@@ -21,9 +24,13 @@ class connection(Connection):
         btn = CTkButton(master = app, text ='se connecter', corner_radius = 32, command=self.se_connecter)
         btn.place(relx = 0.5, rely = 0.45, anchor= 'center')
 
+        btn_signup = CTkButton(app, text="Sign Up", corner_radius=32,fg_color='white',text_color='black')
+        btn_signup.place(relx = 0.395, rely = 0.5)
+
         self.entry1 = entry1
         self.entry = entry
         self.btn = btn
+        self.btn_signup = btn_signup
         
 
     label = CTkLabel(master = app, text ='Log In', font=('Arial', 20))
@@ -45,6 +52,6 @@ class connection(Connection):
             print("Vous êtes connecté.")
         else:
             print("Email ou mot de passe incorrect.")
+    
 connection()
-
 app.mainloop()
