@@ -1,5 +1,7 @@
-from customtkinter import *
-from connectionsql import Connection
 from se_connecter import connection
+from inscription import Page_inscription
+
+
+
 
 
