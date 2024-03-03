@@ -1,13 +1,16 @@
 import mysql.connector
+from mysql.connector import Error
 from database import Data
 
 class Chat(Data):
     def __init__(self):
-        self.conn, self.cursor = Data(
+        data_instance = Data(
             host="localhost",
             user="root",
             password="0000",
-            database="discord").connected()
+            database="discord",
+            ) 
+        self.conn, self.cursor = data_instance.connected()
         
     # Cette fonction construit une requête SQL d'insertion pour ajouter un nouveau message dans la table message avec les valeurs spécifiées.
     def creation_message(self, msg, type,auteur):
@@ -17,7 +20,7 @@ class Chat(Data):
             self.cursor.execute(query, values) # Exécute la requête SQL spécifiée dans la variable query en utilisant les valeurs passées dans la variable values.
             self.conn.commit() # Valide toutes les modifications qui ont été faites depuis le dernier commit dans la base de données.
             print("Utilisateur ajouté avec succès !")
-        except mysql.connector.Error as err:
+        except Error as err:
             print(f"Erreur: {err}")
             
     # Cette fonction est utilisée pour lire tous les messages enregistrés dans la table message.
@@ -45,7 +48,7 @@ class Chat(Data):
             self.cursor.execute(query, values)
             self.conn.commit()
             print("Le message à été mis à jour avec succès !")
-        except mysql.connector.Error as err:
+        except Error as err:
             print(f"Erreur: {err}")
             
     # Cette fonction est utilisée pour supprimer un message existant dans la table message.
@@ -58,7 +61,7 @@ class Chat(Data):
             self.cursor.execute(query, values)
             self.conn.commit()
             print("Message supprimé avec succès !")
-        except mysql.connector.Error as err:
+        except Error as err:
             print(f"Erreur: {err}")
             
     # Cette fonction est utilisée pour fermer la connexion à la base de données. 
@@ -68,4 +71,6 @@ class Chat(Data):
             self.cursor.close() # est appelé pour fermer le curseur utilisé pour exécuter des requêtes SQL.
             self.conn.close() # est appelé pour fermer la connexion à la base de données.
                 
-        
+if __name__ == "__main__":
+    chat = Chat()
+    chat.creation_message("hello test",1,1)

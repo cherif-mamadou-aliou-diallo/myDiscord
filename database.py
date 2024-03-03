@@ -1,20 +1,21 @@
-import mysql.connector
-
+import mysql.connector as mc
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
 class Data :
-    def __init__(self, host, user, password, database):
-        
-        self.host = host
-        self.user = user
-        self.password = password
-        self.database = database
-
+    def __init__(self):
+        self.__host = os.getenv("host"),
+        self.__user = os.getenv("user"),
+        self.__password = os.getenv("password"),
+        self.__database = os.getenv("database")
+        # pass
     def connected(self):
-        conn = mysql.connector.connect(
-            host=self.host,
-            user= self.user,
-            password = self.password,
-            database = self.database
+        conn = mc.connect(
+            host = self.__host,
+            user = self.__user,
+            password = self.__password,
+            database = self.__database
         )
         cursor = conn.cursor()
         return conn, cursor
