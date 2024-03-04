@@ -3,6 +3,7 @@ from PIL import Image, ImageTk
 from connectionsql import Connection
 import mysql.connector
 
+
 app = CTk() 
 app.geometry("650x550")
 app.title = 'MYDISCORD' 
@@ -21,7 +22,7 @@ class connection(Connection):
         btn = CTkButton(master=app, text='se connecter', corner_radius=32, command=self.se_connecter)
         btn.place(relx=0.5, rely=0.45, anchor='center')
 
-        btn_signup = CTkButton(app, text="Sign Up", corner_radius=32, fg_color='white', text_color='black')
+        btn_signup = CTkButton(app, text="Sign Up", corner_radius=32, fg_color='white', text_color='black', command=self.inscription )
         btn_signup.place(relx=0.395, rely=0.5)
 
         self.entry1 = entry1
@@ -32,6 +33,8 @@ class connection(Connection):
         self.label = CTkLabel(master=app, text='Log In', font=('Arial', 20))
         self.label.place(relx=0.5, rely=0.15, anchor='center')
 
+    def inscription(self):
+        os.system('python inscription.py')
     
     image = Image.open("images/R.png") 
     width, height = 300, 150  # Définissez la largeur et la hauteur souhaitées pour votre image
@@ -39,6 +42,7 @@ class connection(Connection):
     photo = ImageTk.PhotoImage(image)
     image_label = CTkLabel(master=app, image=photo, text=None)
     image_label.place(relx=0.5, rely=0.05, anchor="center")
+    
     
     def se_connecter(self):
         email = self.entry.get()
@@ -55,5 +59,5 @@ class connection(Connection):
         else:
             print("Email ou mot de passe incorrect.")
 
-connection()
+connecter = connection()
 app.mainloop()

@@ -57,6 +57,7 @@ class Page_inscription(Connection):
         except mysql.connector.Error as err:
             print(f"Error: {err}")
        
-    
-Page_inscription()
-app.mainloop()
+
+if __name__ == '__main__':    
+    inscription = Page_inscription()
+    app.mainloop()
