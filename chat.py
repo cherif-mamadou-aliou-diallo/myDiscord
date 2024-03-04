@@ -2,44 +2,18 @@ import mysql.connector
 from PIL import Image,ImageTk
 from mysql.connector import Error
 from connectionsql import Connection
-from customtkinter import *
 
-app = CTk() 
-app.geometry("600x500")
-app.title = 'MYDISCORD' 
 
 class Chat(Connection):
+
+
     def __init__(self):
         self.conn, self.cursor = Connection(host="localhost", user="root", password="0000", database="discord").connection()
         
-        entry = CTkEntry(master=app, placeholder_text="tap something", width=300, corner_radius=32)
-        entry.place(relx=0.47, rely=0.9, anchor="center")
-        btn = CTkButton(master=app, text='Send', corner_radius=32)
-        btn.place(relx = 0.85, rely = 0.9, anchor= 'center')
-
-        self.entry = entry
-
-    image = Image.open("images/c.jpeg") 
-    width, height = 900 ,750
-    image = image.resize((width, height))
-    photo = ImageTk.PhotoImage(image)
-
-    
-
-    app.configure(background="white")  # Assurez-vous que le fond est blanc pour éviter les distorsions de l'image
-    background_label = CTkLabel(app, image=photo, text='')
-    background_label.place(x=0, y=0, relwidth=1, relheight=1)
-
-    image = Image.open("images/discord (1).png") 
-    width, height = 70, 50  # Définissez la largeur et la hauteur souhaitées pour votre image
-    image = image.resize((width, height))
-    photo = ImageTk.PhotoImage(image)
-    image_label = CTkLabel(master=app, image=photo, text=None)
-    image_label.place(relx=0.1, rely=0.09, anchor="center")
-
+        
 
     # Cette fonction construit une requête SQL d'insertion pour ajouter un nouveau message dans la table message avec les valeurs spécifiées.
-    def creation_message(self, msg, type,auteur):
+    def creation_message(self,type,auteur):
         query = "INSERT INTO message (id , message , auteur) VALUES (%s, %s, %s)"
         values = (self.entry.get(),type,auteur)
         try:
@@ -100,4 +74,3 @@ class Chat(Connection):
 if __name__ == "__main__":
     chat = Chat()
     chat.creation_message("hello test",1,1)
-app.mainloop()
