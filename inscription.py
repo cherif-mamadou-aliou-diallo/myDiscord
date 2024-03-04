@@ -14,9 +14,9 @@ class Page_inscription(Connection):
         
         
         
-        entry2 = CTkEntry(master=app, placeholder_text="Enter a Username", width=300)
-        entry3 = CTkEntry(master=app, placeholder_text="Enter an email or a number phone", width=300)
-        entry4 = CTkEntry(master=app, placeholder_text="Create a password", width=300)
+        entry2 = CTkEntry(master=app, placeholder_text="Enter a Username", width=300, corner_radius=32)
+        entry3 = CTkEntry(master=app, placeholder_text="Enter an email or a number phone", width=300,corner_radius=32)
+        entry4 = CTkEntry(master=app, placeholder_text="Create a password", width=300,corner_radius=32)
         entry2.place(relx=0.5, rely=0.3, anchor="center")
         entry3.place(relx=0.5, rely=0.4, anchor="center")
         entry4.place(relx=0.5, rely=0.5, anchor="center")
