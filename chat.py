@@ -17,19 +17,31 @@ class Chat(Connection):
         btn = CTkButton(master=app, text='Send', corner_radius=32)
         btn.place(relx = 0.85, rely = 0.9, anchor= 'center')
 
+        self.entry = entry
 
     image = Image.open("images/c.jpeg") 
     width, height = 900 ,750
     image = image.resize((width, height))
     photo = ImageTk.PhotoImage(image)
 
+    
+
     app.configure(background="white")  # Assurez-vous que le fond est blanc pour éviter les distorsions de l'image
     background_label = CTkLabel(app, image=photo, text='')
     background_label.place(x=0, y=0, relwidth=1, relheight=1)
+
+    image = Image.open("images/discord (1).png") 
+    width, height = 70, 50  # Définissez la largeur et la hauteur souhaitées pour votre image
+    image = image.resize((width, height))
+    photo = ImageTk.PhotoImage(image)
+    image_label = CTkLabel(master=app, image=photo, text=None)
+    image_label.place(relx=0.1, rely=0.09, anchor="center")
+
+
     # Cette fonction construit une requête SQL d'insertion pour ajouter un nouveau message dans la table message avec les valeurs spécifiées.
     def creation_message(self, msg, type,auteur):
         query = "INSERT INTO message (id , message , auteur) VALUES (%s, %s, %s)"
-        values = (msg,type,auteur)
+        values = (self.entry.get(),type,auteur)
         try:
             self.cursor.execute(query, values) # Exécute la requête SQL spécifiée dans la variable query en utilisant les valeurs passées dans la variable values.
             self.conn.commit() # Valide toutes les modifications qui ont été faites depuis le dernier commit dans la base de données.
