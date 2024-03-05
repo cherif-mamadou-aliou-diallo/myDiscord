@@ -13,6 +13,21 @@ class Page_inscription(Connection):
         self.conn, self.cursor = Connection(host="localhost", user="root", password="0000", database="discord").connection()
         
         
+        # Fond de l'interface graphique
+        background_image = Image.open("images/c.jpeg")
+        width, height = 980, 880
+        background_image = background_image.resize((width, height))
+        background_photo = ImageTk.PhotoImage(background_image)
+        background_label = CTkLabel(master=app, image=background_photo, text='')
+        background_label.image = background_photo  # Garder une référence à l'image pour éviter la collecte des déchets
+        background_label.place(x=0, y=0, relwidth=1, relheight=1)
+        
+        image = Image.open("images/image.png") 
+        width, height = 270, 80  # Définissez la largeur et la hauteur souhaitées pour votre image
+        image = image.resize((width, height))
+        photo = ImageTk.PhotoImage(image)
+        image_label = CTkLabel(master=app, image=photo, text=None)
+        image_label.place(relx=0.5, rely=0.07, anchor="center")
         
         entry2 = CTkEntry(master=app, placeholder_text="Enter a Username", width=300, corner_radius=32)
         entry3 = CTkEntry(master=app, placeholder_text="Enter an email or a number phone", width=300,corner_radius=32)
@@ -32,12 +47,7 @@ class Page_inscription(Connection):
         
 
     #image discord
-    image = Image.open("images/R.png") 
-    width, height = 300, 150  # Définissez la largeur et la hauteur souhaitées pour votre image
-    image = image.resize((width, height))
-    photo = ImageTk.PhotoImage(image)
-    image_label = CTkLabel(master=app, image=photo, text=None)
-    image_label.place(relx=0.5, rely=0.05, anchor="center")
+    
     
 
  

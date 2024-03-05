@@ -13,6 +13,21 @@ class connection(Connection):
         
         self.conn, self.cursor = Connection(host="localhost", user="root", password="0000", database="discord").connection()
         
+        background_image = Image.open("images/c.jpeg")
+        width, height = 980, 880
+        background_image = background_image.resize((width, height))
+        background_photo = ImageTk.PhotoImage(background_image)
+        background_label = CTkLabel(master=app, image=background_photo, text='')
+        background_label.image = background_photo  # Garder une référence à l'image pour éviter la collecte des déchets
+        background_label.place(x=0, y=0, relwidth=1, relheight=1)
+
+        image = Image.open("images/image.png") 
+        width, height = 270, 80  # Définissez la largeur et la hauteur souhaitées pour votre image
+        image = image.resize((width, height))
+        photo = ImageTk.PhotoImage(image)
+        image_label = CTkLabel(master=app, image=photo, text=None)
+        image_label.place(relx=0.5, rely=0.06, anchor="center")
+
         entry = CTkEntry(master=app, placeholder_text="email adresse ", width=300, corner_radius=32)
         entry1 = CTkEntry(master=app, placeholder_text="password", width=300, corner_radius= 32)
 
@@ -36,12 +51,7 @@ class connection(Connection):
     def inscription(self):
         os.system('python inscription.py')
     
-    image = Image.open("images/R.png") 
-    width, height = 300, 150  # Définissez la largeur et la hauteur souhaitées pour votre image
-    image = image.resize((width, height))
-    photo = ImageTk.PhotoImage(image)
-    image_label = CTkLabel(master=app, image=photo, text=None)
-    image_label.place(relx=0.5, rely=0.05, anchor="center")
+    
     
     
     def se_connecter(self):
