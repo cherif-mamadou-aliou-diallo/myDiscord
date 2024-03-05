@@ -8,6 +8,15 @@ class Interface_chat:
         self.master.geometry("600x500")
         self.master.title('MYDISCORD')
    
+        # Background image
+        background_image = Image.open("images/c.jpeg")
+        width, height = 900, 750
+        background_image = background_image.resize((width, height))
+        background_photo = ImageTk.PhotoImage(background_image)
+        background_label = CTkLabel(self.master, image=background_photo, text='')
+        background_label.image = background_photo  # Keep a reference to the image to prevent garbage collection
+        background_label.place(x=0, y=0, relwidth=1, relheight=1)
+
         # Entry field
         entry = CTkEntry(master=self.master, placeholder_text="Tap something", width=300, corner_radius=32)
         entry.place(relx=0.47, rely=0.9, anchor="center")
@@ -17,15 +26,6 @@ class Interface_chat:
 
         self.entry = entry
         self.btn = btn
-
-        # Background image
-        background_image = Image.open("images/c.jpeg")
-        width, height = 900, 750
-        background_image = background_image.resize((width, height))
-        background_photo = ImageTk.PhotoImage(background_image)
-        background_label = CTkLabel(self.master, image=background_photo, text='')
-        background_label.image = background_photo  # Keep a reference to the image to prevent garbage collection
-        background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
         # Discord logo
         discord_image = Image.open("images/discord (1).png")

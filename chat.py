@@ -2,6 +2,7 @@ import mysql.connector
 from PIL import Image,ImageTk
 from mysql.connector import Error
 from connectionsql import Connection
+from interface import Interface_chat
 
 
 class Chat(Connection):
