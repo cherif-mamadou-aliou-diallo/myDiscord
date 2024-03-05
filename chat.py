@@ -17,12 +17,7 @@ class Chat(Connection):
     def creation_message(self,type,auteur):
         query = "INSERT INTO message (id , message , auteur) VALUES (%s, %s, %s)"
         values = (self.entry.get(),type,auteur)
-        try:
-            self.cursor.execute(query, values) # Exécute la requête SQL spécifiée dans la variable query en utilisant les valeurs passées dans la variable values.
-            self.conn.commit() # Valide toutes les modifications qui ont été faites depuis le dernier commit dans la base de données.
-            print("Utilisateur ajouté avec succès !")
-        except Error as err:
-            print(f"Erreur: {err}")
+        
             
     # Cette fonction est utilisée pour lire tous les messages enregistrés dans la table message.
     # Elle construit une requête SQL de sélection (SELECT * FROM message), puis l'exécute à l'aide du curseur (self.cursor).

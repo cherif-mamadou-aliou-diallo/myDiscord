@@ -4,6 +4,7 @@ from connectionsql import Connection
 import mysql.connector
 
 
+
 app = CTk() 
 app.geometry("650x550")
 app.title = 'MYDISCORD' 
@@ -55,8 +56,7 @@ class Page_inscription(Connection):
     label1 = CTkLabel(master = app, text ="S'inscrire", font=('Arial', 20))
     label1.place(relx = 0.5, rely = 0.2, anchor= 'center')
     
-
-
+    
     def inscription(self):
         query = "INSERT INTO connexion (nom, email, mot_de_pase) VALUES (%s, %s, %s)"
         values = (self.entry2.get(), self.entry3.get(), self.entry4.get())
