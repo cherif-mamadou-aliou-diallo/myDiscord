@@ -1,6 +1,7 @@
 from customtkinter import *
 from PIL import Image, ImageTk
 
+
 class Interface_chat:
 
     def __init__(self, master):
@@ -28,13 +29,15 @@ class Interface_chat:
         self.btn = btn
 
         # Discord logo
-        discord_image = Image.open("images/discord (1).png")
-        width, height = 70, 60
+        discord_image = Image.open("images/image.png")
+        width, height = 140, 60
         discord_image = discord_image.resize((width, height))
         discord_photo = ImageTk.PhotoImage(discord_image)
         discord_label = CTkLabel(master=self.master, image=discord_photo, text=None)
         discord_label.image = discord_photo  # Keep a reference to the image to prevent garbage collection
-        discord_label.place(relx=0.1, rely=0.09, anchor="center")
+        discord_label.place(relx=0.12, rely=0.08, anchor="center")
+
+        
 
 if __name__ == "__main__":
     app = CTk()
