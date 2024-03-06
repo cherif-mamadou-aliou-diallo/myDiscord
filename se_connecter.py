@@ -92,7 +92,7 @@ class connection(Connection):
         if result:
             print("Vous êtes connecté.") 
             app.destroy()
-            os.system('python 1.py')
+            os.system('python interface_chat.py')
             
 
         else:
