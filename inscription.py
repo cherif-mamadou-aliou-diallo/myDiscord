@@ -9,7 +9,7 @@ app = CTk()
 app.geometry("650x550")
 app.title = 'MYDISCORD' 
 
-class Page_inscription(Connection):
+class Page_inscription(Connection,CTk):
     def __init__(self):
         self.conn, self.cursor = Connection(host="localhost", user="root", password="0000", database="discord").connection()
         
@@ -64,6 +64,7 @@ class Page_inscription(Connection):
             self.cursor.execute(query, values)
             self.conn.commit()
             print("User added successfully.")
+            app.destroy()
         except mysql.connector.Error as err:
             print(f"Error: {err}")
        

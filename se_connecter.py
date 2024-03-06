@@ -90,7 +90,11 @@ class connection(Connection):
 
         # Vérifier si un enregistrement est trouvé
         if result:
-            print("Vous êtes connecté.")
+            print("Vous êtes connecté.") 
+            app.destroy()
+            os.system('python 1.py')
+            
+
         else:
             print("Email ou mot de passe incorrect.")
 
